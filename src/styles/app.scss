@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-style: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  display: grid;
+
+  grid-template-areas: "sidebar todos";
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 100vh;
+
+  .sidebar {
+    grid-area: sidebar;
+  }
+
+  .todos {
+    grid-area: todos;
+    padding: 2rem;
+    background-color: white;
+    font-style: Arial, Helvetica, sans-serif;
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    grid-template-areas: "sidebar"
+                         "todos";
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+}

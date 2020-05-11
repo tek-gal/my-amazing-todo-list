@@ -1,0 +1,102 @@
+@import '@styles/mixins.scss';
+@import '@styles/icons.scss';
+
+$mainBackgroundColor: #fca311;
+$hoverBackgroundColor: #f3b539;
+$textColor: rgba(255, 255, 255, 0.65);
+$fontFamily: Arial, Helvetica, sans-serif;
+
+@mixin border-bottom($color) {
+  border-bottom: 1px solid $color;
+}
+
+@mixin background-color($color) {
+  background-color: $color;
+}
+
+@mixin font-set($size: 1rem, $weight: normal,
+  $family: $fontFamily, $color: $textColor) {
+  color: $color;
+  font-family: $family;
+  font-weight: $weight;
+  font-size: $size;
+}
+
+.sidebar {
+  @include background-color($mainBackgroundColor);
+  @include font-set;
+
+  .add-list-button {
+        padding: 1.2rem;
+        @include reset-button;
+        @include background-color($mainBackgroundColor);
+        @include font-set($weight: bold);
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        cursor: pointer;
+
+        &:hover, &:focus {
+          @include background-color($hoverBackgroundColor);
+        }
+      }
+
+  .todolists-list {
+    @include reset-list;
+
+    .todolists-list-item {
+      @include font-set;
+      @include reset-button;
+      @include background-color($mainBackgroundColor);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      button {
+        color: $textColor;
+        background: content-box;
+        border: none;
+        cursor: pointer;
+      }
+
+      .todo-list-name {
+        font-family: Arial;
+        font-size: 1rem;
+        flex-grow: 1;
+        padding: 1rem 1.5rem;
+      }
+
+      .todo-list-delete {
+        font-size: 1.2rem;
+        padding: 1rem 1rem;
+      }
+
+      &:hover, &:focus {
+        @include background-color($hoverBackgroundColor);
+      }
+
+      &.selected {
+        @include background-color($hoverBackgroundColor);
+        @include border-bottom($hoverBackgroundColor);
+      }
+    }
+  }
+
+  .add-list-input {
+    padding: 1rem 1.5rem;
+    @include background-color($hoverBackgroundColor);
+    @include border-bottom($hoverBackgroundColor);
+
+    input {
+      @include font-set;
+      @include background-color($hoverBackgroundColor);
+      @include border-bottom($hoverBackgroundColor);
+      width: 100%;
+      outline: none;
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
